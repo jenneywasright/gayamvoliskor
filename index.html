@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Volleyball Scoreboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HALAMAN UTAMA -->
+  <section id="view-home" class="view active">
+    <h1>Volleyball Scoreboard</h1>
+    <p>Aplikasi pencatat skor tarkam offline-first.</p>
+    <div class="menu-buttons">
+      <button onclick="app.navigateTo('view-setup')" class="btn-primary">Buat Pertandingan Baru</button>
+      <button onclick="app.navigateTo('view-history')" class="btn-secondary">Riwayat Pertandingan</button>
+    </div>
+  </section>
+
+  <!-- HALAMAN SETUP PERTANDINGAN -->
+  <section id="view-setup" class="view">
+    <h2>Buat Pertandingan</h2>
+    
+    <div class="form-group">
+      <label>Nama Pertandingan:</label>
+      <input type="text" id="input-match-name" placeholder="Contoh: Final RT 03 vs RT 05">
+    </div>
+
+    <div class="team-setup-container">
+      <!-- Setup Team A -->
+      <div class="team-setup card">
+        <h3>Team A</h3>
+        <input type="text" id="input-team-a-name" placeholder="Nama Team A">
+        <label>Pemain (pisahkan dengan koma):</label>
+        <textarea id="input-team-a-players" rows="3" placeholder="Contoh: Budi, Andi, Joko"></textarea>
+      </div>
+
+      <!-- Setup Team B -->
+      <div class="team-setup card">
+        <h3>Team B</h3>
+        <input type="text" id="input-team-b-name" placeholder="Nama Team B">
+        <label>Pemain (pisahkan dengan koma):</label>
+        <textarea id="input-team-b-players" rows="3" placeholder="Contoh: Doni, Eko, Riko"></textarea>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button onclick="app.navigateTo('view-home')" class="btn-secondary">Batal</button>
+      <button onclick="app.startMatch()" class="btn-primary">Mulai Pertandingan</button>
+    </div>
+  </section>
+
+  <!-- HALAMAN LIVE SCOREBOARD -->
+  <section id="view-live" class="view">
+    <div class="match-header">
+      <h3 id="display-match-name">Nama Pertandingan</h3>
+      <button onclick="app.undoLastPoint()" class="btn-warning btn-small">↩ Undo Terakhir</button>
+    </div>
+
+    <div class="scoreboard">
+      <!-- Team A Board -->
+      <div class="team-board">
+        <h2 id="display-team-a-name">Team A</h2>
+        <div class="score" id="score-team-a">0</div>
+        <button onclick="app.promptPoint('A')" class="btn-primary btn-large">+ Point</button>
+      </div>
+
+      <!-- Team B Board -->
+      <div class="team-board">
+        <h2 id="display-team-b-name">Team B</h2>
+        <div class="score" id="score-team-b">0</div>
+        <button onclick="app.promptPoint('B')" class="btn-primary btn-large">+ Point</button>
+      </div>
+    </div>
+
+    <button onclick="app.finishMatch()" class="btn-danger btn-full">Selesaikan Pertandingan</button>
+  </section>
+
+  <!-- HALAMAN STATISTIK / SUMMARY -->
+  <section id="view-summary" class="view">
+    <h2>Ringkasan Pertandingan</h2>
+    <div id="summary-content"></div>
+    <button onclick="app.navigateTo('view-home')" class="btn-primary btn-full">Kembali ke Beranda</button>
+  </section>
+
+  <!-- MODAL SUMBER POIN (Hidden by default) -->
+  <div id="modal-point" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title">Sumber Poin</h3>
+      <p id="modal-desc">Pilih bagaimana poin didapatkan:</p>
+      <div class="modal-buttons" id="modal-source-buttons">
+        <!-- Buttons injected by JS -->
+      </div>
+      <div class="modal-buttons hidden" id="modal-player-buttons">
+        <!-- Player buttons injected by JS -->
+      </div>
+      <button onclick="app.closeModal()" class="btn-secondary" style="margin-top: 20px; width: 100%;">Batal</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
