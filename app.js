@@ -58,11 +58,11 @@ function viewHome(){
 }
 function viewSetup(){
   app.innerHTML='<div class="wrap"><div class="top"><a href="#/" class="btn ghost" style="text-decoration:none">← Kembali</a><h1>Buat Pertandingan</h1><span></span></div>'+
-  '<form class="card" id="setup"><label>Nama Pertandingan<input name="name" required value="Turnamen RT 05"></label>'+
+  '<form class="card" id="setup"><label>Nama Pertandingan<input name="name" required value="ES TEH-AN"></label>'+
   '<div class="two"><label>Nama Tim A<input name="ta" required value="LOR"></label><label>Nama Tim B<input name="tb" required value="KIDUL"></label></div>'+
   '<div class="two"><label>Pemain Tim A (pisahkan koma)<textarea name="pa" rows="4" placeholder="Dwi, Dian, Rudi, Rafi, Ajik, Mendhot"></textarea></label>'+
-  '<label>Pemain Tim B (pisahkan koma)<textarea name="pb" rows="4" placeholder="B1 Andi, B2 Eko, B3 Fajar"></textarea></label></div>'+
-  '<div class="mut">Format "A1 Budi" otomatis jadi kode A1 bernama Budi. Tanpa kode, pemain diberi kode otomatis.</div>'+
+  '<label>Pemain Tim B (pisahkan koma)<textarea name="pb" rows="4" placeholder="Didin, Alim, Dika, Nerpok, Supri, Tonggok"></textarea></label></div>'+
+  '<div class="mut">Format "A1 Budi" otomatis jadi kode A1 bernama Iwon. Tanpa kode, pemain diberi kode otomatis.</div>'+
   '<button class="btn" type="submit">Simpan & Mulai</button></form></div>';
 }
 function viewMatch(m){
